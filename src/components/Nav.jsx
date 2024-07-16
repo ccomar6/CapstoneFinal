@@ -1,8 +1,11 @@
 // src/components/Nav.jsx
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext.jsx';
 
 const Navigation = () => {
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <header className="p-3 bg-dark text-white">
       <div className="container-fluid">
@@ -21,6 +24,14 @@ const Navigation = () => {
               <Link className="nav-link text-white" to="/cart">Cart</Link>
             </li>
           </ul>
+          {user ? (
+            <button className="btn btn-danger" onClick={logout}>Logout</button>
+          ) : (
+            <div>
+              <Link className="btn btn-primary me-2" to="/login">Login</Link>
+              <Link className="btn btn-secondary" to="/register">Register</Link>
+            </div>
+          )}
         </div>
       </div>
     </header>
