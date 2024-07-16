@@ -1,0 +1,15 @@
+/* src/css/styles.css */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Add any custom styles below */
+body {
+  padding-top: 56px;
+}
+
+.cart-title {
+  margin: 20px 0;
+}
+
+.product-details {
+  margin-top: 20px;
+}

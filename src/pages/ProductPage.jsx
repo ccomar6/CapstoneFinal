@@ -30,16 +30,20 @@ const ProductPage = () => {
   }
 
   return (
-    <div className="product-details">
-      <h1>{product.title}</h1>
-      <div className="product-image">
-        <img src={product.image} className="img-fluid" alt={product.title} />
+    <div className="container product-details">
+      <div className="row">
+        <div className="col-md-6">
+          <img src={product.image} className="img-fluid" alt={product.title} />
+        </div>
+        <div className="col-md-6">
+          <h1>{product.title}</h1>
+          <p>{product.description}</p>
+          <p className="h4">${product.price.toFixed(2)}</p>
+          <button className="btn btn-primary" onClick={() => addToCart(product)}>
+            Add to Cart
+          </button>
+        </div>
       </div>
-      <p>{product.description}</p>
-      <p>${product.price.toFixed(2)}</p>
-      <button className="btn btn-primary" onClick={() => addToCart(product)}>
-        Add to Cart
-      </button>
     </div>
   );
 };

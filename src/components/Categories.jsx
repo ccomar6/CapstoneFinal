@@ -1,12 +1,12 @@
 // src/components/Categories.jsx
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Categories = () => {
   const apiURL = 'https://fakestoreapi.com/';
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchCategories();
@@ -27,8 +27,6 @@ const Categories = () => {
       setCategories(data);
     } catch (error) {
       console.error('Fetch error:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -49,10 +47,6 @@ const Categories = () => {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
     });
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
@@ -90,12 +84,12 @@ const Categories = () => {
         {products.map(product => (
           <div className="col-md-3" key={product.id}>
             <div className="product">
-              <a href={`/product.html?productid=${encodeURIComponent(product.id)}`}>
+              <Link to={`/product/${product.id}`}>
                 <img src={product.image} className="img-fluid" alt={product.title} />
                 <div className="info">
                   <div className="title">{product.title}</div>
                 </div>
-              </a>
+              </Link>
             </div>
           </div>
         ))}
