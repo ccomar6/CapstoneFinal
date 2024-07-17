@@ -1,6 +1,4 @@
-// src/components/Categories.jsx
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 const Categories = () => {
   const apiURL = 'https://fakestoreapi.com/';
@@ -49,47 +47,33 @@ const Categories = () => {
   };
 
   return (
-    <div>
-      <nav>
-        <ul id="categories">
-          {categories.map(category => (
-            <li key={category}>
-              <a
-                className="dropdown-item"
-                href="#"
-                onClick={() => setSelectedCategory(category)}
-              >
-                {toTitleCase(category)}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className="categories-list row">
+    <div className="container mt-4">
+      <h1 className="mb-4">Categories</h1>
+      <div className="row mb-4">
         {categories.map(category => (
-          <div className="col-md-3" key={category}>
-            <a
-              href="#"
-              className="btn btn-primary"
+          <div className="col-md-3 mb-3" key={category}>
+            <button
+              className="btn btn-outline-primary w-100"
               onClick={() => setSelectedCategory(category)}
             >
               {toTitleCase(category)}
-            </a>
+            </button>
           </div>
         ))}
       </div>
 
-      <div className="products row">
+      <div className="row">
         {products.map(product => (
-          <div className="col-md-3" key={product.id}>
-            <div className="product">
-              <Link to={`/product/${product.id}`}>
-                <img src={product.image} className="img-fluid" alt={product.title} />
-                <div className="info">
-                  <div className="title">{product.title}</div>
-                </div>
-              </Link>
+          <div className="col-md-3 mb-4" key={product.id}>
+            <div className="card">
+              <img src={product.image} className="card-img-top" alt={product.title} />
+              <div className="card-body">
+                <h5 className="card-title">{product.title}</h5>
+                <p className="card-text">${product.price.toFixed(2)}</p>
+                <a href={`/product.html?productid=${encodeURIComponent(product.id)}`} className="btn btn-primary">
+                  View Product
+                </a>
+              </div>
             </div>
           </div>
         ))}
