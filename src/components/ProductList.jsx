@@ -1,18 +1,10 @@
-// src/components/ProductList.jsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import useCart from '../hooks/useCart';
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
+const ProductList = ({ products }) => {
   const { addToCart } = useCart();
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products?limit=10')
-      .then(response => response.json())
-      .then(data => setProducts(data));
-  }, []);
-  
   const handleAddToCart = (product) => {
     addToCart(product);
   };
@@ -21,7 +13,7 @@ const ProductList = () => {
     <div className="row products">
       {products.map(product => (
         <div className="col-md-3 mb-4" key={product.id}>
-          <div className="product">
+          <div className="product card">
             <Link to={`/product/${product.id}`} className="text-decoration-none text-dark">
               <img src={product.image} className="card-img-top" alt={product.title} />
               <div className="card-body">
