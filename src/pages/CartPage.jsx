@@ -1,11 +1,13 @@
 import React from 'react';
-import useCart from '../hooks/useCart';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const CartPage = () => {
-  const { cart, removeFromCart, clearCart, updateQuantity, getTotal } = useCart();
+  const { cart, removeFromCart, updateQuantity, getTotal, checkout } = useCart();
+  const navigate = useNavigate();
 
-  const handleQuantityChange = (productId, quantity) => {
-    updateQuantity(productId, quantity);
+  const handleCheckout = () => {
+    navigate('/checkout');
   };
 
   return (
@@ -41,7 +43,7 @@ const CartPage = () => {
                         type="number"
                         className="form-control"
                         value={item.quantity}
-                        onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                        onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
                         min="1"
                       />
                     </td>
@@ -57,16 +59,10 @@ const CartPage = () => {
             </table>
           </div>
           <div className="d-flex justify-content-between align-items-center mt-4">
-            <button className="btn btn-outline-danger" onClick={clearCart}>
-              Clear Cart
-            </button>
-            <h3>Total: ${getTotal().toFixed(2)}</h3>
-            <button className="btn btn-success" onClick={() => {
-              alert('Checkout functionality not implemented yet.');
-              clearCart();
-            }}>
+            <button className="btn btn-outline-danger" onClick={() => handleCheckout()}>
               Checkout
             </button>
+            <h3>Total: ${getTotal().toFixed(2)}</h3>
           </div>
         </>
       )}
@@ -75,3 +71,5 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
+

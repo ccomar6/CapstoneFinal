@@ -209,3 +209,50 @@ header .display-4 {
 .cart-page h3 {
   font-size: 1.75rem;
 }
+
+/* Cart Page Styles */
+.cart-page .table-responsive {
+  margin-bottom: 2rem;
+}
+
+.cart-page .table thead th {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+.cart-page .btn-danger {
+  margin-right: 5px;
+}
+
+.cart-page .btn-success {
+  margin-left: 5px;
+}
+
+.cart-page .btn-outline-danger {
+  margin-right: 10px;
+}
+
+.cart-page h3 {
+  font-size: 1.75rem;
+}
+
+/* Product Card Styles */
+.product-card {
+  height: 100%;
+  width: 100%;
+}
+
+.product-image {
+  height:30vw;
+  object-fit: cover;
+}
+
+.product-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-card .card-footer {
+  margin-top: auto;
+}

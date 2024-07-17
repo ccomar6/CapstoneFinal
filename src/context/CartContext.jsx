@@ -52,7 +52,6 @@ export const CartProvider = ({ children }) => {
   };
 
   const checkout = () => {
-    alert('Checkout complete!');
     clearCart();
   };
 

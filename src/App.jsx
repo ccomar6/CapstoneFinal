@@ -9,8 +9,8 @@ import ProductPage from './pages/ProductPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import CheckoutPage from './pages/CheckoutPage';
-import { AuthProvider } from './context/AuthContext.jsx';
-import { CartProvider } from './context/CartContext.jsx';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 
 const App = () => {
   return (

@@ -47,7 +47,6 @@ const useCart = () => {
   };
 
   const checkout = () => {
-    alert('Checkout complete!');
     clearCart();
   };
 
