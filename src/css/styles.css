@@ -183,3 +183,29 @@ header .display-4 {
 .jumbotron .lead {
   color: var(--secondary-color);
 }
+
+/* Cart Page Styles */
+.cart-page .table-responsive {
+  margin-bottom: 2rem;
+}
+
+.cart-page .table thead th {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+.cart-page .btn-danger {
+  margin-right: 5px;
+}
+
+.cart-page .btn-success {
+  margin-left: 5px;
+}
+
+.cart-page .btn-outline-danger {
+  margin-right: 10px;
+}
+
+.cart-page h3 {
+  font-size: 1.75rem;
+}
