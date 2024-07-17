@@ -11,7 +11,7 @@ const Home = () => {
       .then(response => response.json())
       .then(data => {
         setProducts(data);
-        setFilteredProducts(data);
+        setFilteredProducts(data); // Initially show all products
       });
   }, []);
 
@@ -41,10 +41,16 @@ const Home = () => {
 
   return (
     <div className="container-fluid">
-      <h1>Newest Products</h1>
-      <div className="filter-section">
-        <label htmlFor="price-range">Price Range:</label>
-        <select id="price-range" value={priceRange} onChange={handlePriceRangeChange}>
+      <div className="jumbotron text-center my-4">
+        <h1 className="display-4">Welcome to Capstone eCommerce</h1>
+        <p className="lead">Discover the latest products and best deals!</p>
+        <hr className="my-4" />
+        <p>Browse through our extensive collection and find what you need.</p>
+      </div>
+
+      <div className="filter-section mb-4 d-flex justify-content-center">
+        <label htmlFor="price-range" className="mr-2">Price Range:</label>
+        <select id="price-range" value={priceRange} onChange={handlePriceRangeChange} className="form-select w-auto mr-2">
           <option value="all">All</option>
           <option value="0-50">$0 - $50</option>
           <option value="51-100">$51 - $100</option>
@@ -54,6 +60,7 @@ const Home = () => {
         </select>
         <button className="btn btn-primary" id="filter-button" onClick={handleFilterClick}>Filter</button>
       </div>
+
       <ProductList products={filteredProducts} />
     </div>
   );
