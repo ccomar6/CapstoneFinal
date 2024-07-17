@@ -1,5 +1,17 @@
 /* src/css/styles.css */
 @import 'bootstrap/dist/css/bootstrap.min.css';
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control .btn {
+  margin: 0 5px;
+}
+
+.quantity {
+  padding: 0 10px;
+}
 
 /* Add any custom styles below */
 body {

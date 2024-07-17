@@ -1,7 +1,12 @@
-// src/hooks/useCart.js
-import { useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const useCart = () => {
+const CartContext = createContext();
+
+export const useCart = () => {
+  return useContext(CartContext);
+};
+
+export const CartProvider = ({ children }) => {
   const cartKey = 'shoppingCart';
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem(cartKey)) || []);
 
@@ -27,7 +32,7 @@ const useCart = () => {
 
   const clearCart = () => {
     setCart([]);
-    localStorage.removeItem(cartKey); // Ensure local storage is also cleared
+    localStorage.removeItem(cartKey);
   };
 
   const updateQuantity = (productId, quantity) => {
@@ -51,7 +56,9 @@ const useCart = () => {
     clearCart();
   };
 
-  return { cart, addToCart, removeFromCart, clearCart, updateQuantity, getTotal, checkout };
+  return (
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, updateQuantity, getTotal, checkout }}>
+      {children}
+    </CartContext.Provider>
+  );
 };
-
-export default useCart;

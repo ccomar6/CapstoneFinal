@@ -1,10 +1,12 @@
 // src/components/Nav.jsx
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext.jsx';
+import { useCart } from '../context/CartContext.jsx'; // Use the CartContext
 
 const Navigation = () => {
   const { user, logout } = useContext(AuthContext);
+  const { cart } = useCart();
 
   return (
     <header className="p-3 bg-dark text-white">
@@ -21,7 +23,7 @@ const Navigation = () => {
               <Link className="nav-link text-white" to="/category">Categories</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-white" to="/cart">Cart</Link>
+              <Link className="nav-link text-white" to="/cart">Cart ({cart.reduce((acc, item) => acc + item.quantity, 0)})</Link>
             </li>
           </ul>
           {user ? (
@@ -39,4 +41,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
