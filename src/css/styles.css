@@ -256,3 +256,22 @@ header .display-4 {
 .product-card .card-footer {
   margin-top: auto;
 }
+
+/* Additional custom styles for the Categories page */
+.category-button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+}
+
+.category-button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.product-card {
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}

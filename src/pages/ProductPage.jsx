@@ -1,7 +1,7 @@
 // src/pages/ProductPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import useCart from '../hooks/useCart';
+import { useCart } from '../context/CartContext';
 
 const ProductPage = () => {
   const { id } = useParams();
